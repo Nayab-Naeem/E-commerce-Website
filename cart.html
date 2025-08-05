@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+   <link rel="icon" type="image/png" href="images/favicon.png" />
+  <title>Pastel Shop - Your Cart</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    body {
+      background-color: #ffeef2; /* Soft pastel pink/cream background */
+      padding: 40px 20px;
+      color: #444;
+    }
+
+    h1 {
+      text-align: center;
+      color: #ff7f9f;
+      margin-bottom: 30px;
+      font-size: 34px;
+      letter-spacing: 1px;
+    }
+
+    .cart-container {
+      max-width: 700px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .cart-item {
+      padding: 16px 22px;
+      background-color: #fff5f8;
+      border-left: 6px solid #ff9ca8;
+      border-radius: 14px;
+      margin-bottom: 15px;
+      font-size: 18px;
+      color: #444;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.03);
+    }
+
+    .empty-message {
+      text-align: center;
+      color: #999;
+      font-size: 18px;
+      padding: 40px 0;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 10px 24px;
+      background-color: #ff9ca8;
+      color: white;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 600;
+      text-align: center;
+      transition: background 0.3s ease, transform 0.2s;
+    }
+
+    .back-btn:hover {
+      background-color: #ff7f9f;
+      transform: scale(1.03);
+    }
+
+    .btn-center {
+      text-align: center;
+    }
+
+    @media screen and (max-width: 600px) {
+      .cart-container {
+        padding: 20px;
+      }
+
+      .cart-item {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🛍️ Your Cart</h1>
+
+  <div class="cart-container" id="cart-items">
+    <!-- Cart items will load here -->
+  </div>
+
+  <div class="btn-center">
+    <a href="shop.html" class="back-btn">← Back to Shop</a>
+  </div>
+
+  <script>
+    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    const cartContainer = document.getElementById("cart-items");
+
+    if (cartItems.length === 0) {
+      cartContainer.innerHTML = '<div class="empty-message">Your cart is empty 😔</div>';
+    } else {
+      cartItems.forEach((item, index) => {
+        const div = document.createElement("div");
+        div.className = "cart-item";
+        div.textContent = `• ${item}`;
+        cartContainer.appendChild(div);
+      });
+    }
+  </script>
+
+</body>
+</html>
