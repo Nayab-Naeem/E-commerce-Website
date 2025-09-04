@@ -486,3 +486,87 @@ header {
     font-size: 16px;
   }
 }
+/*Responsiveness*/
+
+/* For large desktops (1200px and above) */
+@media screen and (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+    margin: auto;
+  }
+}
+
+/* For laptops & medium desktops (992px to 1199px) */
+@media screen and (max-width: 1199px) {
+  .navbar ul {
+    gap: 20px;
+  }
+  .hero h1 {
+    font-size: 40px;
+  }
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* For tablets (768px to 991px) */
+@media screen and (max-width: 991px) {
+  .navbar ul {
+    display: none; /* hide full nav */
+  }
+  .navbar .menu-toggle {
+    display: block; /* show hamburger */
+    font-size: 26px;
+    cursor: pointer;
+  }
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .hero h1 {
+    font-size: 32px;
+  }
+  .hero p {
+    font-size: 16px;
+  }
+}
+
+/* For mobile phones (up to 767px) */
+@media screen and (max-width: 767px) {
+  body {
+    padding: 15px;
+  }
+  .hero {
+    text-align: center;
+    padding: 40px 15px;
+  }
+  .hero h1 {
+    font-size: 26px;
+    line-height: 1.3;
+  }
+  .hero p {
+    font-size: 14px;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr; /* 1 column */
+  }
+
+  .product-card {
+    margin: 10px auto;
+    max-width: 280px;
+  }
+
+  .cart-container {
+    padding: 15px;
+  }
+  .cart-item {
+    font-size: 14px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px 10px;
+    font-size: 14px;
+  }
+}
