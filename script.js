@@ -1,3 +1,23 @@
+//======================= search bar=================== // 
+const searchForm = document.getElementById("searchForm");
+const searchInput = document.getElementById("searchInput");
+
+searchForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const query = searchInput.value.toLowerCase().trim();
+  const products = document.querySelectorAll(".products .product-card");
+
+  products.forEach((product) => {
+    const name = product.querySelector("h2").textContent.toLowerCase();
+
+    // ✅ Agar input khali hai, to sab show karo
+    if (query === "" || name.includes(query)) {
+      product.style.display = "block"; 
+    } else {
+      product.style.display = "none";
+    }
+  });
+});
 // ==================== CART SYSTEM ==================== //
 
 // Initialize cart from localStorage

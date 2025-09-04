@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/png" href="images/favicon.png" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shop</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -20,8 +20,19 @@
 </a>
   <!-- Your shop section starts here -->
   <section class="shop-section">
-    <!-- your 11 product cards go here -->
   </section>
+
+  <!-- Bootstrap Search Bar -->
+    <form id="searchForm" class="d-flex" role="search">
+      <input 
+        class="form-control me-2" 
+        type="search" 
+        id="searchInput" 
+        placeholder="Search products..." 
+        aria-label="Search"
+      >
+      <button class="btn btn-success" type="submit">Search</button>
+    </form>
 
   <main>
     <section class="products">
