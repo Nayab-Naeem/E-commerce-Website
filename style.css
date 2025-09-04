@@ -1,6 +1,4 @@
-/* ===========================
-   Global Styles (Pastel Shop)
-   =========================== */
+/* Global Styles*/
 
 /* --- Reset & Base Styles --- */
 * {
@@ -488,117 +486,223 @@ header {
 }
 /*Responsiveness*/
 
-/* For large desktops (1200px and above) */
-@media screen and (min-width: 1200px) {
-  .container {
-    max-width: 1140px;
-    margin: auto;
-  }
-}
+/* =========================
+   RESPONSIVE DESIGN
+   ========================= */
 
-/* For laptops & medium desktops (992px to 1199px) */
-@media screen and (max-width: 1199px) {
-  .navbar ul {
-    gap: 20px;
+/* Tablets & smaller laptops */
+@media (max-width: 992px) {
+  nav ul {
+    gap: 1rem;
+    flex-wrap: wrap;
   }
-  .hero h1 {
+
+  #shop h1,
+  #about h1,
+  #contact-banner h1 {
     font-size: 40px;
+    padding: 20px;
   }
-  .product-grid {
-    grid-template-columns: repeat(3, 1fr);
+
+  .products {
+    gap: 1rem;
+  }
+
+  .product-card,
+  .f {
+    width: 45%;
+    height: auto;
+  }
+
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-content {
+    padding: 30px;
   }
 }
 
-/* For tablets (768px to 991px) */
-@media screen and (max-width: 991px) {
-  .navbar ul {
-    display: none; /* hide full nav */
+/* Mobile Phones */
+@media (max-width: 576px) {
+  /* Navbar */
+  nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
   }
-  .navbar .menu-toggle {
-    display: block; /* show hamburger */
-    font-size: 26px;
-    cursor: pointer;
-  }
-  .product-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-  .hero h1 {
-    font-size: 32px;
-  }
-  .hero p {
-    font-size: 16px;
-  }
-}
-
-/* For mobile phones (up to 767px) */
-@media screen and (max-width: 767px) {
-  body {
-    padding: 15px;
-  }
-  .hero {
+  nav ul li a {
+    display: block;
+    width: 100%;
     text-align: center;
-    padding: 40px 15px;
   }
-  .hero h1 {
-    font-size: 26px;
-    line-height: 1.3;
+
+  /* Hero sections */
+  #pic,
+  #shop,
+  #about,
+  #contact-banner {
+    height: 150px;
+    background-position: center;
   }
-  .hero p {
+
+  #shop h1,
+  #about h1,
+  #contact-banner h1 {
+    font-size: 28px;
+    padding: 10px;
+  }
+
+  /* Product Cards */
+  .products {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  .product-card,
+  .f {
+    width: 100%;
+    height: auto;
+  }
+  .product-card img,
+  .f img {
+    height: auto;
+  }
+
+  /* About / Contact Sections */
+  .about-content {
+    padding: 20px;
     font-size: 14px;
   }
-
-  .product-grid {
-    grid-template-columns: 1fr; /* 1 column */
+  .contact-form {
+    padding: 20px;
   }
 
-  .product-card {
-    margin: 10px auto;
-    max-width: 280px;
-  }
-
+  /* Cart Page */
   .cart-container {
-    padding: 15px;
+    padding: 20px;
+    border-radius: 12px;
   }
   .cart-item {
-    font-size: 14px;
+    font-size: 16px;
+  }
+  .back-btn {
+    width: 100%;
+    text-align: center;
   }
 
-  footer {
+  /* Footer */
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    padding: 20px 10px;
-    font-size: 14px;
+  }
+  .footer-section {
+    margin: 1rem 0;
   }
 }
-/* Navbar toggle hidden on desktop */
+
+/* --- Navbar (responsive with hamburger toggle) --- */
+.navbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1rem;
+  background-color: #660066; /* change to var(--primary) if you use variables */
+  z-index: 1000;
+}
+
+/* logo */
+.navbar .logo a {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1.15rem;
+}
+
+/* desktop nav list */
+#nav-links {
+  display: flex;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+/* nav links */
+#nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+#nav-links li a:hover {
+  background-color: #FFC5C5;
+  color: black;
+  text-decoration: underline;
+}
+
+/* hamburger button (hidden desktop) */
 .menu-toggle {
   display: none;
-  color: var(--primary, #660066);
+  background: none;
+  border: none;
+  color: #fff;
   font-size: 26px;
   cursor: pointer;
+  line-height: 1;
+  padding: 8px;
 }
 
-/* Show toggle on tablets/mobiles */
-@media screen and (max-width: 991px) {
+/* ------------- Responsive behavior ------------- */
+
+/* For screens <= 992px we show the hamburger and make the mobile menu */
+@media (max-width: 992px) {
   .menu-toggle {
     display: block;
   }
-  .navbar ul {
-    display: none;
-    flex-direction: column;
-    background: #ffeef2;
+
+  /* keep layout flexible on tablets: show normal inline nav if wide enough */
+  /* but for smaller widths below we collapse using max-height */
+}
+
+/* For small screens, turn the nav into a vertical collapsible panel */
+@media (max-width: 768px) {
+  /* stack the nav items inside an absolutely-positioned panel */
+  #nav-links {
     position: absolute;
-    top: 60px;
-    right: 20px;
-    width: 200px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    padding: 15px;
+    top: 100%;
+    right: 0;
+    width: 220px;                  /* panel width */
+    background-color: #660066;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 6px 0;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+
+    /* IMPORTANT: use max-height for smooth open/close transition */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
   }
-  .navbar ul.show {
-    display: flex;
+
+  #nav-links li a {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
   }
-  .navbar ul li {
-    margin: 10px 0;
+
+  /* When active (toggled by JS) the menu expands */
+  #nav-links.active {
+    max-height: 500px; /* large enough to show all items; adjust if you add links */
   }
+}
+
+/* Optional: ensure full-width nav for very small devices */
+@media (max-width: 360px) {
+  #nav-links { width: 100%; left: 0; right: 0; }
 }
