@@ -570,3 +570,35 @@ header {
     font-size: 14px;
   }
 }
+/* Navbar toggle hidden on desktop */
+.menu-toggle {
+  display: none;
+  color: var(--primary, #660066);
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* Show toggle on tablets/mobiles */
+@media screen and (max-width: 991px) {
+  .menu-toggle {
+    display: block;
+  }
+  .navbar ul {
+    display: none;
+    flex-direction: column;
+    background: #ffeef2;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 15px;
+  }
+  .navbar ul.show {
+    display: flex;
+  }
+  .navbar ul li {
+    margin: 10px 0;
+  }
+}
