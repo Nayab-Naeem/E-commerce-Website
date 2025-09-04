@@ -18,8 +18,6 @@
   <a href="cart.html" class="cart-box">
   🛒 Cart: <span id="cart-count">0</span>
 </a>
-
-
   <!-- Your shop section starts here -->
   <section class="shop-section">
     <!-- your 11 product cards go here -->
@@ -31,77 +29,77 @@
         <img src="images/band.jpg" alt="Hair Band" />
         <h2>Hair Band</h2>
         <p>$4.99</p>
-        <button onclick="addToCart('Hair Band')">Add to Cart</button>
+        <button onclick="addToCart('Hair Band',4.99, event)">Add to Cart</button>
       </div>
 
       <div class="product-card">
         <img src="images/rings.jpg" alt="Rings" />
         <h2>Rings</h2>
         <p>$2.99</p>
-        <button onclick="addToCart('Rings')">Add to Cart</button>
+        <button onclick="addToCart('Rings',2.99, event)">Add to Cart</button>
       </div>
 
       <div class="product-card">
         <img src="images/catcher.jpg" alt="Catcher" />
         <h2>Catcher</h2>
         <p>$4.99</p>
-        <button onclick="addToCart('Catcher')">Add to Cart</button>
+        <button onclick="addToCart('Catcher',4.99,event)">Add to Cart</button>
       </div>
 
       <div class="product-card">
         <img src="images/ringss.jpg" alt="Rings Packet" />
         <h2>Rings Packet</h2>
         <p>$9.99</p>
-        <button onclick="addToCart('Rings Packet')">Add to Cart</button>
+        <button onclick="addToCart('Rings Packet',9.99,event)">Add to Cart</button>
       </div>
 
       <div class="product-card">
         <img src="images/bow.jpg" alt="Hair Bow" />
         <h2>Hair Bow</h2>
         <p>$9.99</p>
-        <button onclick="addToCart('Hair Bow')">Add to Cart</button>
+        <button onclick="addToCart('Hair Bow',9.99,event)">Add to Cart</button>
       </div>
 
       <div class="product-card">
         <img src="images/bracelet.jpg" alt="Bracelet" />
         <h2>Bracelet</h2>
         <p>$9.99</p>
-        <button onclick="addToCart('Bracelet')">Add to Cart</button>
+        <button onclick="addToCart('Bracelet',9.99,event)">Add to Cart</button>
       </div>
 
       <div class="product-card">
         <img src="images/catcher2.jpg" alt="Catcher 2" />
         <h2>Catcher</h2>
         <p>$9.99</p>
-        <button onclick="addToCart('Catcher 2')">Add to Cart</button>
+        <button onclick="addToCart('Catcher 2',9.99,event)">Add to Cart</button>
       </div>
 
       <div class="product-card">
         <img src="images/earings.jpg" alt="Earrings" />
         <h2>Earrings</h2>
         <p>$9.99</p>
-        <button onclick="addToCart('Earrings')">Add to Cart</button>
+        <button onclick="addToCart('Earrings',9.99, event)">Add to Cart</button>
       </div>
 
       <div class="product-card">
         <img src="images/earings2.jpeg" alt="Earrings 2" />
         <h2>Earrings</h2>
         <p>$9.99</p>
-        <button onclick="addToCart('Earrings 2')">Add to Cart</button>
+        <button onclick="addToCart('Earrings 2',9.99,event)">Add to Cart</button>
       </div>
 
       <div class="product-card">
         <img src="images/necklace2.jpeg" alt="Necklace Set" />
         <h2>Necklace Set</h2>
         <p>$9.99</p>
-        <button onclick="addToCart('Necklace Set')">Add to Cart</button>
+        <button onclick="addToCart('Necklace Set',9.99,event)">Add to Cart</button>
       </div>
 
       <div class="product-card">
         <img src="images/pins.jpeg" alt="Hair Pins" />
         <h2>Hair Stylish Pins</h2>
         <p>$9.99</p>
-        <button onclick="addToCart('Hair Pins')">Add to Cart</button>
+        <button onclick="addToCart('Hair Pins',9.99,event)">Add to Cart</button>
       </div>
     </section>
   </main>
@@ -126,15 +124,15 @@
   let cartCount = 0;
   let cartItems = [];
 
-  function addToCart(productName) {
+  function addToCart(productName, price, event) {
     cartCount++;
     document.getElementById("cart-count").textContent = cartCount;
 
-    // Add item to cart array
-    cartItems.push(productName);
+    // Add item to cart array (with name + price)
+    cartItems.push({ name: productName, price: price });
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
-    // Disable the button
+    // Disable the button after click
     const button = event.target;
     button.textContent = "Added!";
     button.disabled = true;
@@ -148,8 +146,9 @@
     cartCount = cartItems.length;
     document.getElementById("cart-count").textContent = cartCount;
   };
+
+
 </script>
-
-
+<script src="script.js"></script>
 </body>
 </html>
