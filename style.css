@@ -60,45 +60,31 @@ nav ul li a:hover {
 }
 
 
-/* --- Footer (Global) --- */
+/* --- Footer --- */
+.footer a:hover i {
+  transform: scale(1.2) rotate(360deg);
+  transition: transform 0.5s ease;
+}
+
 footer {
-  background-color: #FFC5C5;
+  background-color: #FFC5C5 !important; /* force apply */
+  padding: 2rem 1rem;
   text-align: center;
-  padding: 2rem;
-  margin-top: 2rem;
-  font-family: 'Poppins', sans-serif;
-  color: #000;
 }
 
-.footer-section {
-  padding: 20px;
+.footer-copy {
+  font-size: 0.9rem;
+  opacity: 0.7;
 }
 
-.footer-section h3 {
-  font-size: 18px;
-  margin-bottom: 15px;
+.footer-nav a {
+  font-weight: 500;
   color: #660066;
+  transition: color 0.3s;
 }
 
-.footer-section ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-section ul li {
-  margin-bottom: 10px;
-}
-
-.footer-section ul li a {
-  text-decoration: none;
-  color: #333;
-  font-size: 14px;
-  transition: color 0.3s ease;
-}
-
-.footer-section ul li a:hover {
-  color: #660066;
+.footer-nav a:hover {
+  color: #1A8754 
 }
 
 /* ===========================
