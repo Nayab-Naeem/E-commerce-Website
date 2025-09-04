@@ -47,6 +47,16 @@ function addToCart(name, price, event) {
 
   saveCart();
   updateCartCount();
+  
+  // Toast message update
+const toastMessage = document.getElementById("toast-message");
+toastMessage.textContent = `✅ ${name} added to cart!`;
+
+// Show toast using Bootstrap
+const toastElement = document.getElementById("cartToast");
+const toast = new bootstrap.Toast(toastElement);
+toast.show();
+
 
   // Change button text temporarily
   if (event) {
