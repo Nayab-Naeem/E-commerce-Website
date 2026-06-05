@@ -1,23 +1,133 @@
-//======================= search bar=================== // 
-const searchForm = document.getElementById("searchForm");
-const searchInput = document.getElementById("searchInput");
+// ==================== NAVBAR ==================== //
+const navbarHTML = `
+<nav class="navbar navbar-expand-lg sticky-top" id="mainNav">
+  <div class="container">
 
-searchForm.addEventListener("submit", function (e) {
-  e.preventDefault();
-  const query = searchInput.value.toLowerCase().trim();
-  const products = document.querySelectorAll(".products .product-card");
+    <a class="navbar-brand" href="home.html">
+      <span class="brand-name">Pastel</span><span class="brand-dot">Boutique</span>
+    </a>
 
-  products.forEach((product) => {
-    const name = product.querySelector("h2").textContent.toLowerCase();
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="toggler-icon">☰</span>
+    </button>
 
-    // ✅ Agar input khali hai, to sab show karo
-    if (query === "" || name.includes(query)) {
-      product.style.display = "block"; 
-    } else {
-      product.style.display = "none";
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center gap-2">
+        <li class="nav-item">
+          <a class="nav-link" href="home.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="shop.html">Shop</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link cart-nav-btn" href="cart.html">
+            🛒 Cart <span class="cart-badge" id="cart-count">0</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+`;
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Inject navbar
+  const existingNav = document.querySelector("nav, header nav");
+  document.body.insertAdjacentHTML("afterbegin", navbarHTML);
+
+  // Highlight active page
+  const links = document.querySelectorAll("#mainNav .nav-link");
+  links.forEach(link => {
+    if (link.href === window.location.href) {
+      link.classList.add("active-link");
     }
   });
 });
+
+// ==================== FOOTER ==================== //
+const footerHTML = `
+<footer class="footer mt-5">
+  <div class="container py-5">
+    <div class="row g-4">
+
+      <div class="col-lg-4 col-md-6">
+        <h4 class="footer-title">Pastel Boutique 🌸</h4>
+        <p class="footer-desc">Your go-to destination for soft, elegant, and affordable accessories. Crafted with love for modern girls.</p>
+        <div class="footer-social-links mt-3">
+          <a href="mailto:nayabnaeem.tech@gmail.com" class="footer-social-btn">
+            <i class="bi bi-envelope-fill"></i>
+          </a>
+          <a href="https://github.com/Nayab-Naeem" target="_blank" class="footer-social-btn">
+            <i class="bi bi-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/nayabnaeemcs" target="_blank" class="footer-social-btn">
+            <i class="bi bi-linkedin"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-2 col-md-6">
+        <h5 class="footer-heading">Quick Links</h5>
+        <ul class="footer-list">
+          <li><a href="home.html"><i class="bi bi-chevron-right"></i> Home</a></li>
+          <li><a href="shop.html"><i class="bi bi-chevron-right"></i> Shop</a></li>
+          <li><a href="cart.html"><i class="bi bi-chevron-right"></i> Cart</a></li>
+          <li><a href="about.html"><i class="bi bi-chevron-right"></i> About</a></li>
+          <li><a href="contact.html"><i class="bi bi-chevron-right"></i> Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <h5 class="footer-heading">Categories</h5>
+        <ul class="footer-list">
+          <li><a href="shop.html"><i class="bi bi-chevron-right"></i> Hair Accessories</a></li>
+          <li><a href="shop.html"><i class="bi bi-chevron-right"></i> Jewellery</a></li>
+          <li><a href="shop.html"><i class="bi bi-chevron-right"></i> Earrings</a></li>
+          <li><a href="shop.html"><i class="bi bi-chevron-right"></i> Bracelets</a></li>
+          <li><a href="shop.html"><i class="bi bi-chevron-right"></i> Necklaces</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <h5 class="footer-heading">Contact Us</h5>
+        <ul class="footer-contact-list">
+          <li><i class="bi bi-geo-alt-fill"></i> Gujranwala, Pakistan</li>
+          <li><a href="mailto:nayabnaeem.tech@gmail.com"><i class="bi bi-envelope-fill"></i> nayabnaeem.tech@gmail.com</a></li>
+          <li><a href="https://www.linkedin.com/in/nayabnaeemcs" target="_blank"><i class="bi bi-linkedin"></i> linkedin.com/in/nayabnaeemcs</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <hr class="footer-divider mt-4">
+
+    <div class="row align-items-center">
+      <div class="col-md-6 text-center text-md-start">
+        <p class="footer-copy mb-0">© 2026 Pastel Boutique. All rights reserved.</p>
+      </div>
+      <div class="col-md-6 text-center text-md-end">
+        <p class="footer-copy mb-0">Built with <span class="footer-heart">♥</span> using HTML, CSS & JavaScript</p>
+      </div>
+    </div>
+
+  </div>
+</footer>
+`;
+
+document.addEventListener("DOMContentLoaded", function () {
+  const existing = document.querySelector("footer");
+  if (existing) existing.remove();
+  document.body.insertAdjacentHTML("beforeend", footerHTML);
+});
+
+
 // ==================== CART SYSTEM ==================== //
 
 // Initialize cart from localStorage
