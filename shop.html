@@ -2,157 +2,202 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="images/favicon.png" />
-  <title>Shop</title>
+  <title>Shop | Pastel Boutique</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 
-  <section id="shop">
-    <h1>#Shop like a Pro</h1>
-  </section>
-  
-
-  <!-- Your shop section starts here -->
-  <section class="shop-section">
+  <!-- Shop Hero -->
+  <section class="shop-hero">
+    <div class="shop-hero-overlay"></div>
+    <div class="shop-hero-content">
+      <span class="hero-tag">✨ Our Collection</span>
+      <h1>Shop <span class="hero-highlight">All Products</span></h1>
+      <p>Discover our full range of pastel accessories</p>
+    </div>
   </section>
 
   <!-- Search Bar -->
-    <form id="searchForm" class="d-flex" role="search">
-      <input 
-        class="form-control" 
-        type="search" 
-        id="searchInput" 
-        placeholder="Search products..." 
-        aria-label="Search"
-      >
-      <button class="btn search-btn" type="submit">Search</button>
+  <div class="shop-controls">
+    <form id="searchForm" role="search">
+      <div class="search-wrap">
+        <i class="bi bi-search search-icon"></i>
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="Search products..."
+          aria-label="Search"
+        >
+      </div>
     </form>
 
+    <!-- Category Filters -->
+    <div class="filter-btns">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="hair">
+        <i class="bi bi-stars"></i> Hair
+      </button>
+      <button class="filter-btn" data-filter="jewellery">
+        <i class="bi bi-gem"></i> Jewellery
+      </button>
+      <button class="filter-btn" data-filter="earrings">
+        <i class="bi bi-circle"></i> Earrings
+      </button>
+      
+    </div>
+    <!-- Sort Dropdown -->
+<div class="sort-wrap">
+  <label for="sortSelect"><i class="bi bi-arrow-down-up"></i> Sort by:</label>
+  <select id="sortSelect">
+    <option value="default">Default</option>
+    <option value="low-high">Price: Low to High</option>
+    <option value="high-low">Price: High to Low</option>
+    <option value="name-az">Name: A to Z</option>
+  </select>
+</div>
+    <div class="results-count" id="resultsCount">Showing 13 products</div>
+  </div>
+
+  <!-- Products Grid -->
   <main>
-    <section class="products">
-      <div class="product-card">
+    <section class="products" id="productsGrid">
+
+      <!-- HAIR ACCESSORIES -->
+      <div class="product-card" data-category="hair" data-name="hair band">
+        <div class="product-badge">Hair</div>
         <img src="images/band.jpg" alt="Hair Band" />
         <h2>Hair Band</h2>
         <p>$4.99</p>
-        <button onclick="addToCart('Hair Band',4.99, event)">Add to Cart</button>
+        <button onclick="addToCart('Hair Band', 4.99, event)">Add to Cart</button>
       </div>
 
-      <div class="product-card">
-        <img src="images/rings.jpg" alt="Rings" />
-        <h2>Rings</h2>
-        <p>$2.99</p>
-        <button onclick="addToCart('Rings',2.99, event)">Add to Cart</button>
-      </div>
-
-      <div class="product-card">
-        <img src="images/catcher.jpg" alt="Catcher" />
-        <h2>Catcher</h2>
-        <p>$4.99</p>
-        <button onclick="addToCart('Catcher',4.99,event)">Add to Cart</button>
-      </div>
-
-      <div class="product-card">
-        <img src="images/ringss.jpg" alt="Rings Packet" />
-        <h2>Rings Packet</h2>
-        <p>$9.99</p>
-        <button onclick="addToCart('Rings Packet',9.99,event)">Add to Cart</button>
-      </div>
-
-      <div class="product-card">
+      <div class="product-card" data-category="hair" data-name="hair bow">
+        <div class="product-badge">Hair</div>
         <img src="images/bow.jpg" alt="Hair Bow" />
         <h2>Hair Bow</h2>
         <p>$9.99</p>
-        <button onclick="addToCart('Hair Bow',9.99,event)">Add to Cart</button>
+        <button onclick="addToCart('Hair Bow', 9.99, event)">Add to Cart</button>
       </div>
 
-      <div class="product-card">
+      <div class="product-card" data-category="hair" data-name="hair stylish pins">
+        <div class="product-badge">Hair</div>
+        <img src="images/pins.jpeg" alt="Hair Pins" />
+        <h2>Stylish Hair Pins</h2>
+        <p>$6.99</p>
+        <button onclick="addToCart('Hair Pins', 6.99, event)">Add to Cart</button>
+      </div>
+
+      <div class="product-card" data-category="hair" data-name="dream catcher clip">
+        <div class="product-badge">Hair</div>
+        <img src="images/catcher.jpg" alt="Dream Catcher Clip" />
+        <h2>Dream Catcher Clip</h2>
+        <p>$4.99</p>
+        <button onclick="addToCart('Dream Catcher Clip', 4.99, event)">Add to Cart</button>
+      </div>
+
+      <div class="product-card" data-category="hair" data-name="catcher clip set">
+        <div class="product-badge sale-badge">Sale</div>
+        <img src="images/catcher2.jpg" alt="Catcher Clip Set" />
+        <h2>Catcher Clip Set</h2>
+        <p>$7.99</p>
+        <button onclick="addToCart('Catcher Clip Set', 7.99, event)">Add to Cart</button>
+      </div>
+
+      <!-- JEWELLERY -->
+      <div class="product-card" data-category="jewellery" data-name="rings">
+        <div class="product-badge jewel-badge">Jewellery</div>
+        <img src="images/rings.jpg" alt="Rings" />
+        <h2>Pastel Rings</h2>
+        <p>$2.99</p>
+        <button onclick="addToCart('Pastel Rings', 2.99, event)">Add to Cart</button>
+      </div>
+
+      <div class="product-card" data-category="jewellery" data-name="rings packet set">
+        <div class="product-badge jewel-badge">Jewellery</div>
+        <img src="images/ringss.jpg" alt="Rings Packet" />
+        <h2>Rings Packet</h2>
+        <p>$9.99</p>
+        <button onclick="addToCart('Rings Packet', 9.99, event)">Add to Cart</button>
+      </div>
+
+      <div class="product-card" data-category="jewellery" data-name="bracelet">
+        <div class="product-badge jewel-badge">Jewellery</div>
         <img src="images/bracelet.jpg" alt="Bracelet" />
-        <h2>Bracelet</h2>
+        <h2>Pastel Bracelet</h2>
         <p>$9.99</p>
-        <button onclick="addToCart('Bracelet',9.99,event)">Add to Cart</button>
+        <button onclick="addToCart('Pastel Bracelet', 9.99, event)">Add to Cart</button>
       </div>
 
-      <div class="product-card">
-        <img src="images/catcher2.jpg" alt="Catcher 2" />
-        <h2>Catcher</h2>
-        <p>$9.99</p>
-        <button onclick="addToCart('Catcher 2',9.99,event)">Add to Cart</button>
+      <div class="product-card" data-category="jewellery" data-name="locket necklace">
+        <div class="product-badge new-badge">New</div>
+        <img src="images/locket.jpg" alt="Locket" />
+        <h2>Locket Necklace</h2>
+        <p>$12.99</p>
+        <button onclick="addToCart('Locket Necklace', 12.99, event)">Add to Cart</button>
       </div>
 
-      <div class="product-card">
-        <img src="images/earings.jpg" alt="Earrings" />
-        <h2>Earrings</h2>
-        <p>$9.99</p>
-        <button onclick="addToCart('Earrings',9.99, event)">Add to Cart</button>
+      <div class="product-card" data-category="jewellery" data-name="necklace">
+        <div class="product-badge jewel-badge">Jewellery</div>
+        <img src="images/necklace.jpeg" alt="Necklace" />
+        <h2>Pastel Necklace</h2>
+        <p>$8.99</p>
+        <button onclick="addToCart('Pastel Necklace', 8.99, event)">Add to Cart</button>
       </div>
 
-      <div class="product-card">
-        <img src="images/earings2.jpeg" alt="Earrings 2" />
-        <h2>Earrings</h2>
-        <p>$9.99</p>
-        <button onclick="addToCart('Earrings 2',9.99,event)">Add to Cart</button>
-      </div>
-
-      <div class="product-card">
+      <div class="product-card" data-category="jewellery" data-name="necklace set">
+        <div class="product-badge new-badge">New</div>
         <img src="images/necklace2.jpeg" alt="Necklace Set" />
         <h2>Necklace Set</h2>
-        <p>$9.99</p>
-        <button onclick="addToCart('Necklace Set',9.99,event)">Add to Cart</button>
+        <p>$14.99</p>
+        <button onclick="addToCart('Necklace Set', 14.99, event)">Add to Cart</button>
       </div>
 
-      <div class="product-card">
-        <img src="images/pins.jpeg" alt="Hair Pins" />
-        <h2>Hair Stylish Pins</h2>
+      <!-- EARRINGS -->
+      <div class="product-card" data-category="earrings" data-name="earrings">
+        <div class="product-badge ear-badge">Earrings</div>
+        <img src="images/earings.jpg" alt="Earrings" />
+        <h2>Pastel Earrings</h2>
         <p>$9.99</p>
-        <button onclick="addToCart('Hair Pins',9.99,event)">Add to Cart</button>
+        <button onclick="addToCart('Pastel Earrings', 9.99, event)">Add to Cart</button>
       </div>
+
+      <div class="product-card" data-category="earrings" data-name="earrings set">
+        <div class="product-badge ear-badge">Earrings</div>
+        <img src="images/earings2.jpeg" alt="Earrings Set" />
+        <h2>Earrings Set</h2>
+        <p>$7.99</p>
+        <button onclick="addToCart('Earrings Set', 7.99, event)">Add to Cart</button>
+      </div>
+
     </section>
+
+    <!-- No results message -->
+    <div class="no-results" id="noResults" style="display:none;">
+      <i class="bi bi-search"></i>
+      <p>No products found</p>
+      <span>Try a different search or category</span>
+    </div>
+
   </main>
 
-<footer class="footer bg-light py-4">
-  <div class="container d-flex flex-wrap justify-content-between align-items-center">
-    <div class="footer-brand mb-3">
-      <h3>Pastel Boutique</h3>
-      <p class="mb-0">Soft accessories for every day</p>
-    </div>
-    <div class="footer-nav mb-3">
-      <a href="home.html" class="text-decoration-none mx-2">Home</a>
-      <a href="shop.html" class="text-decoration-none mx-2">Shop</a>
-      <a href="contact.html" class="text-decoration-none mx-2">Contact</a>
-      <a href="about.html" class="text-decoration-none mx-2">About</a>
-    </div>
-    <div class="footer-social mb-3">
-      <!-- Logo-only animation icons using Bootstrap Icons -->
-      <a href="#" class="text-decoration-none mx-2"><i class="bi bi-instagram"></i></a>
-      <a href="#" class="text-decoration-none mx-2"><i class="bi bi-facebook"></i></a>
-      <a href="#" class="text-decoration-none mx-2"><i class="bi bi-envelope"></i></a>
-    </div>
-    <div class="footer-copy text-muted">© 2025 Pastel Boutique</div>
-  </div>
-</footer>
-
-<!-- Toast container -->
-<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-  <div id="cartToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="d-flex">
-      <div class="toast-body" id="toast-message">
-        ✅ Item added to cart!
+  <!-- Toast -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div id="cartToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body" id="toast-message">✅ Item added to cart!</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
-      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
   </div>
-</div>
 
-<script src="script.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

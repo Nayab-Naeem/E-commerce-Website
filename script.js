@@ -127,7 +127,99 @@ document.addEventListener("DOMContentLoaded", function () {
   document.body.insertAdjacentHTML("beforeend", footerHTML);
 });
 
+// ==================== SHOP FILTERS & SEARCH ==================== //
+const searchInput = document.getElementById("searchInput");
+const filterBtns = document.querySelectorAll(".filter-btn");
+const sortSelect = document.getElementById("sortSelect");
+const resultsCount = document.getElementById("resultsCount");
+const noResults = document.getElementById("noResults");
+const productsGrid = document.getElementById("productsGrid");
 
+let activeFilter = "all";
+
+function getPrice(card) {
+  const priceText = card.querySelector("p").textContent;
+  return parseFloat(priceText.replace("$", ""));
+}
+
+function getName(card) {
+  return card.querySelector("h2").textContent.toLowerCase();
+}
+
+function filterAndSearch() {
+  const query = searchInput ? searchInput.value.toLowerCase().trim() : "";
+  const sortValue = sortSelect ? sortSelect.value : "default";
+  const cards = Array.from(document.querySelectorAll(".product-card"));
+  let visible = 0;
+
+  // Filter first
+  const visibleCards = cards.filter(card => {
+    const name = card.dataset.name || "";
+    const category = card.dataset.category || "";
+    const matchesSearch = query === "" || name.includes(query);
+    const matchesFilter = activeFilter === "all" || category === activeFilter;
+    return matchesSearch && matchesFilter;
+  });
+
+  // Sort visible cards
+  const sorted = [...visibleCards].sort((a, b) => {
+    if (sortValue === "low-high") return getPrice(a) - getPrice(b);
+    if (sortValue === "high-low") return getPrice(b) - getPrice(a);
+    if (sortValue === "name-az") return getName(a).localeCompare(getName(b));
+    return 0;
+  });
+
+  // Hide all first
+  cards.forEach(card => card.style.display = "none");
+
+  // Show sorted visible ones
+  sorted.forEach(card => {
+    card.style.display = "flex";
+    productsGrid.appendChild(card);
+    visible++;
+  });
+
+  if (resultsCount) {
+    resultsCount.textContent = `Showing ${visible} product${visible !== 1 ? "s" : ""}`;
+  }
+
+  if (noResults) {
+    noResults.style.display = visible === 0 ? "block" : "none";
+  }
+
+  if (productsGrid) {
+    productsGrid.style.display = visible === 0 ? "none" : "grid";
+  }
+}
+
+// Filter buttons
+if (filterBtns.length > 0) {
+  filterBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      filterBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      activeFilter = btn.dataset.filter;
+      filterAndSearch();
+    });
+  });
+}
+
+// Sort
+if (sortSelect) {
+  sortSelect.addEventListener("change", filterAndSearch);
+}
+
+// Real time search
+if (searchInput) {
+  searchInput.addEventListener("input", filterAndSearch);
+  const searchForm = document.getElementById("searchForm");
+  if (searchForm) {
+    searchForm.addEventListener("submit", e => {
+      e.preventDefault();
+      filterAndSearch();
+    });
+  }
+}
 // ==================== CART SYSTEM ==================== //
 
 // Initialize cart from localStorage
@@ -260,4 +352,31 @@ window.onload = () => {
   renderCart();
 };
 
+// ==================== STATS COUNTER ==================== //
+function animateStats() {
+  const statNums = document.querySelectorAll('.stat-num');
+  statNums.forEach(el => {
+    const target = parseInt(el.dataset.target);
+    let current = 0;
+    const step = target / 60;
+    const iv = setInterval(() => {
+      current = Math.min(current + step, target);
+      el.textContent = Math.round(current) + '+';
+      if (current >= target) clearInterval(iv);
+    }, 30);
+  });
+}
 
+// Run stats animation when section is visible
+const statsSection = document.querySelector('.stats-section');
+if (statsSection) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateStats();
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  observer.observe(statsSection);
+}
