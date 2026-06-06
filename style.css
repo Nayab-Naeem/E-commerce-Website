@@ -354,15 +354,79 @@ header { background-color: #FFC5C5; }
 }
 
 /* search bar */
-#searchInput { border-radius: 20px 0 0 20px; }
-
-#searchForm button {
-  border-radius: 0 20px 20px 0;
-  background-color: #1A8754;
-  border: none;
+#searchForm {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  max-width: 720px;
+  margin: 2rem auto 1.5rem;
+  padding: 6px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(248, 200, 212, 0.5);
+  border-radius: 0;
+  box-shadow: 0 14px 32px rgba(102, 0, 102, 0.12);
+  overflow: hidden;
 }
 
-#searchForm button:hover { background-color: #166b44; }
+#searchForm input {
+  border-radius: 0;
+  border: none;
+  flex: 1;
+  min-width: 0;
+  padding: 0.85rem 1rem;
+  font-size: 0.98rem;
+  color: #2d1b33;
+  background: transparent;
+}
+
+#searchForm input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(248, 200, 212, 0.5);
+}
+
+#searchForm input::placeholder {
+  color: #8b5d8d;
+}
+
+#searchForm button.search-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+  background-color: #f8c8d4;
+  color: #2d1b33;
+  border: none;
+  padding: 0.75rem 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+  min-width: 90px;
+  height: auto;
+  line-height: 1.2;
+}
+
+#searchForm button.search-btn:hover {
+  background-color: #ffa0c0;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  #searchForm {
+    flex-direction: column;
+    padding: 14px;
+    border-radius: 30px;
+  }
+
+  #searchForm input,
+  #searchForm button.search-btn {
+    width: 100%;
+    border-radius: 999px;
+  }
+
+  #searchForm button.search-btn {
+    margin-top: 12px;
+  }
+}
 
 .product-card {
   background-color: #FFC5C5;
