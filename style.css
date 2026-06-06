@@ -307,33 +307,139 @@ header { background-color: #FFC5C5; }
   text-align: center;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .f:hover { transform: translateY(-5px); }
 
 .f img {
   width: 100%;
-  height: 70%;
+  height: 220px;
+  object-fit: cover;
   border-radius: 10px 10px 0 0;
 }
 
-.f h2, .f h3 { color: #660066; }
+.f h2 {
+  color: #660066;
+  font-size: 15px;
+  margin: 10px 10px 4px;
+}
 
+.f h3 {
+  color: #660066;
+  font-size: 13px;
+  font-weight: 400;
+  margin: 0 10px 4px;
+}
+
+.f-price {
+  color: #660066;
+  font-weight: 700;
+  font-size: 16px;
+  margin: 6px 0 4px;
+}
+
+.f-btn {
+  display: inline-block;
+  background: #660066;
+  color: white;
+  text-decoration: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 13px;
+  margin: 8px 0 16px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.f-btn:hover {
+  background: #4a004a;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* ===========================
+   Home Banner
+   =========================== */
+.home-banner {
+  background: linear-gradient(135deg, #660066 0%, #4a004a 100%);
+  padding: 70px 20px;
+  text-align: center;
+  margin: 40px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.home-banner::before {
+  content: '🌸';
+  position: absolute;
+  font-size: 120px;
+  opacity: 0.06;
+  top: -20px;
+  left: -20px;
+}
+
+.home-banner::after {
+  content: '🌸';
+  position: absolute;
+  font-size: 120px;
+  opacity: 0.06;
+  bottom: -20px;
+  right: -20px;
+}
+
+.banner-tag {
+  color: #FFC5C5;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.banner-content h2 {
+  color: #fff;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.banner-sub {
+  color: rgba(255,255,255,0.75);
+  font-size: 15px;
+  max-width: 500px;
+  margin: 0 auto 28px;
+  line-height: 1.7;
+}
+
+.banner-btn {
+  display: inline-block;
+  background: #f8c8d4;
+  color: #660066;
+  text-decoration: none;
+  padding: 14px 36px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: all 0.2s;
+}
+
+.banner-btn:hover {
+  background: #fff;
+  color: #660066;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+@media (max-width: 576px) {
+  .banner-content h2 { font-size: 24px; }
+  .home-banner { padding: 50px 20px; }
+}
 /* ===========================
    Shop Page
    =========================== */
-.cart-box {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background-color: white;
-  padding: 8px 14px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-  font-weight: bold;
-  font-size: 16px;
-  z-index: 999;
-}
+
 
 #shop {
   background-image: url('images/shop.jpg');
