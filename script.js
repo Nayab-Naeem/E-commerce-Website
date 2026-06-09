@@ -380,3 +380,26 @@ if (statsSection) {
   }, { threshold: 0.3 });
   observer.observe(statsSection);
 }
+
+// About page stats
+const aboutStats = document.querySelector('.about-stats');
+if (aboutStats) {
+  const aboutObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        document.querySelectorAll('.about-stat-num').forEach(el => {
+          const target = parseInt(el.dataset.target);
+          let current = 0;
+          const step = target / 60;
+          const iv = setInterval(() => {
+            current = Math.min(current + step, target);
+            el.textContent = Math.round(current) + '+';
+            if (current >= target) clearInterval(iv);
+          }, 30);
+        });
+        aboutObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  aboutObserver.observe(aboutStats);
+}
