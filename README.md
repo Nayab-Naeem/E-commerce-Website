@@ -6,7 +6,7 @@ A modern, fully responsive frontend e-commerce website for girls' accessories bu
 
 ## 🔗 Live Demo
 
-**[View Live Site]()** 
+**[View Live Site](pastelshopweb.netlify.app)** 
 
 ---
 
