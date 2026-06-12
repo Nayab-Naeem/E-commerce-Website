@@ -4,7 +4,7 @@ const navbarHTML = `
   <div class="container">
 
     <a class="navbar-brand" href="home.html">
-      <span class="brand-name">Pastel</span><span class="brand-dot">Boutique</span>
+      <span class="brand-name">Pastel</span><span class="brand-dot">Shop</span>
     </a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,7 +58,7 @@ const footerHTML = `
     <div class="row g-4">
 
       <div class="col-lg-4 col-md-6">
-        <h4 class="footer-title">Pastel Boutique 🌸</h4>
+        <h4 class="footer-title">Pastel Shop 🌸</h4>
         <p class="footer-desc">Your go-to destination for soft, elegant, and affordable accessories. Crafted with love for modern girls.</p>
         <div class="footer-social-links mt-3">
           <a href="mailto:nayabnaeem.tech@gmail.com" class="footer-social-btn">
